@@ -6,9 +6,8 @@ export default defineConfig({
       target: 'es2015',
     lib: {
       formats: ['es', 'umd', 'iife'],
-      entry: path.resolve(__dirname, 'src/index.js'),
-      name: 'ajvFormats',
-      //fileName: (format) => `ajv-formats.min.js`
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'ajvAddFormats'
     }
   }
 });

@@ -39,6 +39,9 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+function getDefaultExportFromCjs(x) {
+  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}
 var dist = { exports: {} };
 var formats = {};
 (function(exports) {
@@ -6651,12 +6654,12 @@ var require$$3 = {
   const fastName = new codegen_12.Name("fastFormats");
   const formatsPlugin = (ajv2, opts = { keywords: true }) => {
     if (Array.isArray(opts)) {
-      addFormats(ajv2, opts, formats_1.fullFormats, fullName);
+      addFormats2(ajv2, opts, formats_1.fullFormats, fullName);
       return ajv2;
     }
     const [formats2, exportName] = opts.mode === "fast" ? [formats_1.fastFormats, fastName] : [formats_1.fullFormats, fullName];
     const list = opts.formats || formats_1.formatNames;
-    addFormats(ajv2, list, formats2, exportName);
+    addFormats2(ajv2, list, formats2, exportName);
     if (opts.keywords)
       limit_1.default(ajv2);
     return ajv2;
@@ -6668,7 +6671,7 @@ var require$$3 = {
       throw new Error(`Unknown format "${name}"`);
     return f;
   };
-  function addFormats(ajv2, list, fs, exportName) {
+  function addFormats2(ajv2, list, fs, exportName) {
     var _a;
     var _b;
     (_a = (_b = ajv2.opts.code).formats) !== null && _a !== void 0 ? _a : _b.formats = codegen_12._`require("ajv-formats/dist/formats").${exportName}`;
@@ -6679,5 +6682,5 @@ var require$$3 = {
   Object.defineProperty(exports, "__esModule", { value: true });
   exports.default = formatsPlugin;
 })(dist, dist.exports);
-var ajvFormats = dist.exports.ajvFormats;
-export { ajvFormats };
+var addFormats = /* @__PURE__ */ getDefaultExportFromCjs(dist.exports);
+export { addFormats as default };
